@@ -1,0 +1,94 @@
+openapi: 3.1.0
+info:
+  title: CreditCalculation
+  version: '1.0'
+servers:
+  - url: 'http://localhost:8080'
+paths:
+  /credit/calculation:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      operationId: get-credit-calculation
+      description: Получение графика платежей на основе dto кредита
+      parameters: []
+      responses: {}
+    parameters: []
+  '/payment-schedule/get/{id-payment-schedule}':
+    parameters:
+      - schema:
+          type: string
+        name: id-payment-schedule
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+      operationId: get-payment-schedule-get-id-payment-schedule
+  '/payment-schedule/get/{id-client}':
+    parameters:
+      - schema:
+          type: string
+        name: id-client
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+      operationId: get-payment-schedule-get-id-client
+  '/payment-schedule/get/{id-credit-product}':
+    parameters:
+      - schema:
+          type: string
+        name: id-credit-product
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+      operationId: get-payment-schedule-get-id-credit-product
+  '/payment-schedule/get/{id-client}/{id-credit-product}':
+    parameters:
+      - schema:
+          type: string
+        name: id-client
+        in: path
+        required: true
+      - schema:
+          type: string
+        name: id-credit-product
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+      operationId: get-payment-schedule-get-id-client-id-credit-product
+components:
+  schemas:
+    CreditDTO:
+      title: CreditDTO
+      type: object
+      properties:
+        loanAmount:
+          type: number
+          format: double
+          default: 0
+          minimum: 0
+        interestRate:
+          type: number
+          format: double
+          default: 0
+          minimum: 0
+        loanTermInMonths:
+          type: number
+          format: double
+          default: 0
+          minimum: 0
+        dateReceiptLoan:
+          type: string
+          format: date
+  responses: {}
