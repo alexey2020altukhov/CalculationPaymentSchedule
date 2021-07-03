@@ -21,6 +21,59 @@
         <maven.compiler.target>11</maven.compiler.target>
     </properties>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.openapitools</groupId>
+                <artifactId>openapi-generator-maven-plugin</artifactId>
+                <version>${openapi-generator-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>spring</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${project.basedir}/src/main/resources/creditCalculation.yaml</inputSpec>
+                            <generatorName>credit</generatorName>
+                            <generateSupportingFiles>false</generateSupportingFiles>
+                            <configOptions>
+                                <artifactDescription>API</artifactDescription>
+                                <artifactId>openapi-models</artifactId>
+                                <artifactVersion>0.0.1</artifactVersion>
+                                <dateLibrary>java8-localdatetime</dateLibrary>
+                                <developerName>altukhov</developerName>
+                                <developerOrganization>vstu</developerOrganization>
+                                <developerOrganizationUrl>https://cchgeu.ru/</developerOrganizationUrl>
+                                <disableHtmlEscaping>true</disableHtmlEscaping>
+                                <hideGenerationTimestamp>true</hideGenerationTimestamp>
+                                <interfaceOnly>true</interfaceOnly>
+                                <apiPackage>com.credit.api</apiPackage>
+                                <modelPackage>com.credit.dto</modelPackage>
+                                <skipDefaultInterface>true</skipDefaultInterface>
+                                <serializableModel>true</serializableModel>
+                                <snapshotVersion>true</snapshotVersion>
+                                <sortModelPropertiesByRequiredFlag>false</sortModelPropertiesByRequiredFlag>
+                                <sortParamsByRequiredFlag>false</sortParamsByRequiredFlag>
+                                <sourceFolder>src/main/java</sourceFolder>
+                                <useBeanValidation>false</useBeanValidation>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
     <dependencies>
         <dependency>
             <groupId>com.vstu</groupId>
